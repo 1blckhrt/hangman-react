@@ -1,17 +1,32 @@
-import { applicationName, messages } from "../utils/constants";
+import { applicationName, messages, alphabet } from "../utils/constants";
+import { resetGame, handleKeyboardInput } from "../utils/helpers";
 import GameStatus from "../components/GameStatus";
-import Keyboard from "../components/Keyboard";
-import HangmanFigure from "../components/HangmanFigure";
+import WordDisplay from "../components/WordDisplay";
+import "../styles/Home.css";
 
 export default function Home() {
-  let currentStatus = messages.inProgress; // only for testing purposes
+  const { word, currentStatus, guesses } = resetGame();
 
   return (
-    <div>
-      <HangmanFigure />
-      <h1>{applicationName}</h1>
-      <GameStatus status={currentStatus} />
-      <Keyboard />
+    <div className="container">
+      <div className="graphic_container">
+        <WordDisplay word={word} guesses={[]} />
+      </div>
+      <div className="game_container">
+        <h1>{applicationName}</h1>
+        <GameStatus status={currentStatus} />
+        <div className="keyboard">
+          {alphabet.map((letter) => (
+            <button
+              key={letter}
+              onClick={() => handleKeyboardInput(letter, guesses, word)}
+              className="keyboard_key"
+            >
+              {letter}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
