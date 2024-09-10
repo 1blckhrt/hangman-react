@@ -1,0 +1,25 @@
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.keyboard_key {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.keyboard_key:hover {
+  background-color: #ddd;
+}
+
+.keyboard_key:active {
+  background-color: #bbb;
+  transform: scale(0.95);
+}

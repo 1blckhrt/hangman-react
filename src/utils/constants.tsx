@@ -35,4 +35,4 @@ export const messages = {
   inProgress: "Good luck!",
 };
 
-export const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+export const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
