@@ -1,4 +1,4 @@
-import { applicationName, messages, alphabet } from "../utils/constants";
+import { applicationName, alphabet } from "../utils/constants";
 import { resetGame, handleKeyboardInput } from "../utils/helpers";
 import GameStatus from "../components/GameStatus";
 import WordDisplay from "../components/WordDisplay";
