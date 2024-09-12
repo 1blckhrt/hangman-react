@@ -30,18 +30,6 @@
   transform: scale(0.95);
 }
 
-.keyboard_key.incorrect {
-  background-color: red;
-  color: white;
-  cursor: not-allowed;
-}
-
-.keyboard_key.correct {
-  background-color: green;
-  color: white;
-  cursor: not-allowed;
-}
-
 .rod {
   stroke: #ffffff;
   stroke-width: 4;

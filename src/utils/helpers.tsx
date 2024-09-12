@@ -9,7 +9,7 @@ export function resetGame() {
   const word = getRandomWord();
   const currentStatus = messages.inProgress;
   const guesses: string[] = [];
-  const incorrectGuesses = 0; // Initialize incorrect guesses
+  const incorrectGuesses = 0;
 
   return { word, currentStatus, guesses, incorrectGuesses };
 }
@@ -20,9 +20,16 @@ export function handleKeyboardInput(
   word: string,
   incorrectGuesses: number
 ): { guesses: string[]; currentStatus: string; incorrectGuesses: number } {
+  if (guesses.includes(key.toLowerCase())) {
+    return {
+      guesses,
+      currentStatus: getCurrentStatus(guesses, word, incorrectGuesses),
+      incorrectGuesses,
+    };
+  }
+
   const updatedGuesses = [...guesses, key.toLowerCase()];
 
-  // Check if the guess is incorrect
   if (!word.includes(key.toLowerCase())) {
     return {
       guesses: updatedGuesses,
@@ -35,7 +42,6 @@ export function handleKeyboardInput(
     };
   }
 
-  // Add a return statement for the case when the guess is correct
   return {
     guesses: updatedGuesses,
     currentStatus: getCurrentStatus(updatedGuesses, word, incorrectGuesses),
@@ -50,7 +56,7 @@ function getCurrentStatus(
 ): string {
   const revealedLetters = word
     .split("")
-    .map((letter) => (guesses.includes(letter) ? letter : "_"))
+    .map((letter) => (guesses.includes(letter.toLowerCase()) ? letter : "_"))
     .join("");
 
   if (revealedLetters === word) {

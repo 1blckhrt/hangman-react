@@ -51,19 +51,18 @@ export default function Home() {
         <h1>{applicationName}</h1>
         <GameStatus status={currentStatus} />
         <div className="keyboard">
-          {alphabet.map((letter) => (
-            <button
-              key={letter}
-              onClick={() => handleClick(letter)}
-              disabled={
-                guesses.includes(letter) ||
-                currentStatus !== messages.inProgress
-              }
-              className={"keyboard_key"}
-            >
-              {letter}
-            </button>
-          ))}
+          {alphabet
+            .filter((letter) => !guesses.includes(letter.toLowerCase()))
+            .map((letter) => (
+              <button
+                key={letter}
+                onClick={() => handleClick(letter)}
+                disabled={currentStatus !== messages.inProgress}
+                className={"keyboard_key"}
+              >
+                {letter}
+              </button>
+            ))}
         </div>
       </div>
     </div>
