@@ -1,6 +1,6 @@
 export const applicationName = "Hangman";
 
-const words: string[] = [
+export const words: string[] = [
   "apple",
   "antelope",
   "arrow",
